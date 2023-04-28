@@ -63,7 +63,7 @@ for /f "delims=" %%i in ("!contents!") do echo %%i | findstr /v /r "^somebodyist
 for /f "delims=" %%i in ('echo !contents!') do set lastline=%%i
 set str=
 for /f "tokens=2" %%i in ('echo !lastline! ^|  findstr /r "^somebodyistyping:"') do set str=%%i
-if "!str!" NEQ "" (Title !str! is typing..) else (title  You:%nickname%,Room:%chatroom% Press T to talk)
+if "!str!" NEQ "" (IF "!STR!" neq "%NICKNAME%" Title !str! is typing..) else (title  You:%nickname%,Room:%chatroom% Press T to talk)
 set str=
 for /f "tokens=2" %%i in ('echo !lastline!  ^|  findstr /r "^somebodyentered:"') do set str=%%i
 if "!str!" NEQ "" echo.&echo %_fGREEN% 2>NUL&echo | set /p=!str!%_RESET% entered the chat&echo.
