@@ -2,7 +2,13 @@
 setlocal enabledelayedexpansion
 @echo off
 mode 60,20
+Set _fDGray=[90m
+Set _RESET=[0m
+Set _fGreen=[32m
+SET LF=^
 
+
+REM TWO empty lines are required
 POWERSHELL -FILE powershell-copy-art-title.PS1
 pause >nul
 echo. ******************************************
@@ -25,7 +31,7 @@ set timer=%timer:~0,8%
 if NOT EXIST %server%%chatroom%%timer%.txt echo.  >%server%%chatroom%%timer%.txt
 for /f "tokens=3" %%i in ('dir %server%%chatroom%%timer%.txt ^| find "1 File(s)"') do set Size=%%i
 set oldsize=%size%
-for /f %%i in ('powershell -c "( Get-Content %server%%chatroom%%timer%.txt | Measure-Object -line ).lines"') do set oldline=%%i
+call :CHECKLINE
 echo.somebodyentered: %nickname% >>%server%%chatroom%%timer%.txt
 :keeprepeat
 for /f "tokens=3" %%i in ('dir %server%%chatroom%%timer%.txt ^| find "1 File(s)"') do set Size=%%i
@@ -37,21 +43,36 @@ if %errorlevel%==1 ( CALL :TALK)
 goto keeprepeat
 :TALK
 echo.somebodyistyping: %nickname% >>%server%%chatroom%%timer%.txt
-powershell -c "write-host -nonewline -fore darkgray %nickname%: :"
+echo %_fDGray%&echo | set /p=%nickname%: :&echo | set /p=%_RESET%
 REM echo | set /p=%nickname%: :
 set /p talker=
 ECHO %nickname%: :%talker%  >>%server%%chatroom%%timer%.txt
 exit /b
 :READ
-for /f %%i in ('powershell -c "( Get-Content %server%%chatroom%%timer%.txt | Measure-Object -line ).lines"') do set oldline=%%i
-powershell -c "get-content %server%%chatroom%%timer%.txt -tail !diff!" |  findstr /v /r "^%nickname%:" | findstr /v /r "^somebodyistyping:" |  findstr /v /r "^somebodyentered:"
+set /a counter=0
+for /f "delims=" %%i in ('type %server%%chatroom%%timer%.txt') do set lastline=%%i
+echo !lastline! | findstr /r "^somebodyistyping:" >NUL&&goto ignore
+echo !lastline! | findstr /r "^somebodyentered:" >NUL&&goto ignore
+CALL :CHECKLINE
+set contents=
+for /f "delims=" %%i in ('powershell -c "get-content %server%%chatroom%%timer%.txt -tail !diff!"' ) do SET "contents=!contents!%%i!LF!"
+echo !contents! |  findstr /v /r "^%nickname%:" | findstr /v /r "^somebodyistyping:" |  findstr /v /r "^somebodyentered:"
+goto ignored
+:ignore
+set contents=!lastline!
+:ignored
+for /f "tokens=*" %%i in ('echo !contents!') do set expr=%%i
 set str=
-for /f "tokens=2" %%i in ('powershell -c "get-content %server%%chatroom%%timer%.txt -tail 1"  ^|  findstr /r "^somebodyistyping:"') do set str=%%i
+for /f "tokens=2" %%i in ('echo !expr! ^|  findstr /r "^somebodyistyping:"') do set str=%%i
 if "!str!" NEQ "" (Title !str! is typing..) else (title Room:%chatroom% Press T to talk)
 set str=
-for /f "tokens=2" %%i in ('powershell -c "get-content %server%%chatroom%%timer%.txt -tail 1"  ^|  findstr /r "^somebodyentered:"') do set str=%%i
-if "!str!" NEQ "" echo.&powershell -c "write-host -nonewline -fore green \"!str! \";write-host -nonewline entered the chat."&echo.
+for /f "tokens=2" %%i in ('echo !expr!  ^|  findstr /r "^somebodyentered:"') do set str=%%i
+if "!str!" NEQ "" echo.&echo %_fGREEN%&echo | set /p=!str!%_RESET% entered the chat&echo.
 exit /b
 :CHECKLINE
-for /f %%i in ('powershell -c "( Get-Content %server%%chatroom%%timer%.txt | Measure-Object -line ).lines"') do set line=%%i
+set /a counter=0
+for /f "delims=" %%i in ('type %server%%chatroom%%timer%.txt') do set /a counter+=1
+set /a line=counter
 if !oldline! NEQ !line! set /a diff=line-oldline
+set /a oldline=line
+exit /b
