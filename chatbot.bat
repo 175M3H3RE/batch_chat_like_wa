@@ -1,7 +1,10 @@
 :talker
 setlocal enabledelayedexpansion
 @echo off
-mode 45,20
+mode 60,20
+
+POWERSHELL -FILE powershell-copy-art-title.PS1
+pause >nul
 echo. ******************************************
 echo.                       Please Do not Use the 
 echo.                    Following Symbols As 
@@ -11,8 +14,8 @@ echo.                     " ^
 echo.
 PAUSE
 set server=.\
-set /p nickname=Enter your nickname (no duplicates allowed.)
-set /p chatroom=Enter chatroom ID or name
+set /p nickname=Enter your nickname (no duplicates allowed.):
+set /p chatroom=Enter chatroom ID or name:
 set nickname=%nickname: =%
 set chatroom=%chatroom: =%
 title Room:%chatroom% Press T to talk
