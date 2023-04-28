@@ -16,7 +16,7 @@ echo.                       Please Do not Use the
 echo.                    Following Symbols As 
 echo.                      it may break Chat
 echo.                ^>  ^<  ^&  ^|  
-echo.                     " ^
+echo.                     " ^ ^!
 echo.
 PAUSE
 set server=.\
@@ -50,7 +50,11 @@ exit /b
 set contents=
 set lastline=
 REM debug mode: echo.here!diff!
-for /f "delims=" %%i in ('powershell -c "get-content %server%%chatroom%%timer%.txt -tail !diff!"' ) do SET "contents=!contents!%%i!LF!"
+SET /A TOTAL=LINE-DIFF
+SET /A COUNTER=0
+if %total%==0 set /a total=1
+ for /f "skip=%total% delims=" %%i in ('TYPE %server%%chatroom%%timer%.txt ' ) do SET "contents=!contents!%%i!LF!"
+REM for /f "delims=" %%i in ('powershell -c "get-content %server%%chatroom%%timer%.txt -tail !diff!"' ) do SET "contents=!contents!%%i!LF!"
 REM debug mode: echo. attention
 REM debug mode: echo !contents!
 REM debug mode: echo. i said attention 
