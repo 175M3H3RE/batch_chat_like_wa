@@ -40,7 +40,8 @@ if %errorlevel%==1 ( CALL :TALK)
 goto keeprepeat
 :TALK
 echo.somebodyistyping: %nickname% >>%server%%chatroom%%timer%.txt
-echo %_fDGray% 2>NUL&echo | set /p=%nickname%: :&echo | set /p=%_RESET%
+REM echo %_fDGray% 2>NUL&
+echo | set /p=%_fDGray%%nickname%: :&echo | set /p=%_RESET%
 REM echo | set /p=%nickname%: :
 set /p talker=
 ECHO %nickname%: :%talker%  >>%server%%chatroom%%timer%.txt
@@ -66,7 +67,7 @@ for /f "tokens=2" %%i in ('echo !lastline! ^|  findstr /r "^somebodyistyping:"')
 if "!str!" NEQ "" (IF "!STR!" neq "%NICKNAME%" Title !str! is typing..) else (title  You:%nickname%,Room:%chatroom% Press T to talk)
 set str=
 for /f "tokens=2" %%i in ('echo !lastline!  ^|  findstr /r "^somebodyentered:"') do set str=%%i
-if "!str!" NEQ "" echo.&echo %_fGREEN% 2>NUL&echo | set /p=!str!%_RESET% entered the chat&echo.
+if "!str!" NEQ ""  echo | set /p= %_fGREEN%!str!%_RESET% entered the chat&echo.
 exit /b
 :CHECKLINE
 set /a counter=0
