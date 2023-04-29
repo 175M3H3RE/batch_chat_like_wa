@@ -9,7 +9,7 @@ SET LF=^
 
 
 REM TWO empty lines are required
-POWERSHELL -FILE powershell-copy-art-title.PS1
+if EXIST powershell-copy-art-title.PS1 POWERSHELL -FILE powershell-copy-art-title.PS1
 pause >nul
 echo. ******************************************
 echo.                       Please Do not Use the 
