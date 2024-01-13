@@ -1,6 +1,22 @@
 :talker
 setlocal enabledelayedexpansion
-echo off
+@echo off
+set key__=a b c d e f g h i j k l m n o p q r s t u v w x y z
+set key__=k h z a j m s f d u y n r l b c e g i o p q t v w x
+if not defined KEY__ goto check_key
+set /a countering=0
+echo.@echo off >decode.bat
+echo.set stringtodecode=%%1 >>decode.bat
+for %%a in (%key__%) do call :print_decode %%a&set /a countering+=1
+echo.echo %%stringtodecode%% >>decode.bat
+goto check_key
+:print_decode
+echo set stringtodecode=%%stringtodecode:,%countering%,=%1%% >>decode.bat
+exit /b
+:check_key
+
+if defined key__ for %%a in (%key__%) DO set /a counteng+=1
+
 mode 60,20
 Set _fDGray=[90m
 Set _RESET=[0m
@@ -9,16 +25,19 @@ SET LF=^
 
 
 REM TWO empty lines are required
-if EXIST powershell-copy-art-title.PS1 POWERSHELL -FILE powershell-copy-art-title.PS1
-pause >nul
+
 echo. ******************************************
-echo.                       Please Do not Use the 
-echo.                    Following Symbols As 
-echo.                      it may break Chat
-echo.                ^>  ^<  ^&  ^|  
-echo.                     " ^ ^!
+echo.             Be Safe
+echo.                   Save your Soul
+echo. Use the right keys and avoid the following
+echo.                ^>  ^<  ^&  ^|  " ^ ^!
+echo.     Allowed symbols , : / \ * $ @ #                    
 echo.
-PAUSE
+
+if defined counteng if "%counteng%" GEQ "25" echo.      Encryption Key "seems" OK[%counteng%]
+if not defined counteng ( echo.          Key seems missing ^[No encryption^] )
+PAUSE 
+PAUSE >NUL
 set server=.\
 set /p nickname=Enter your nickname (no duplicates allowed.):
 set /p chatroom=Enter chatroom ID or name:
@@ -44,9 +63,30 @@ REM echo %_fDGray% 2>NUL&
 echo | set /p=%_fDGray%%nickname%: :&echo | set /p=%_RESET%
 REM echo | set /p=%nickname%: :
 set /p talker=
-ECHO %nickname%: :%talker%  >>%server%%chatroom%%timer%.txt
+set talkischeap=
+set /a skip_talk=0
+if defined key__ for /l %%g in (0,1,200) do CALL :getchar_ %%g
+if defined key__ ECHO %nickname%: :%talkischeap%  >>%server%%chatroom%%timer%.txt
+if not defined key__ ECHO %nickname%: :%talker%  >>%server%%chatroom%%timer%.txt
 CALL :CHECKSIZE
 exit /b
+:getchar_
+if %skip_talk%==1 Exit /B
+CALL set char_single=%%talker:~%1,1%%
+if "%char_single%"=="" set /a skip_talk=1
+if "%char_single%" NEQ " " CALL :Constructor %char_single%
+if "%char_single%"==" " set talkischeap=%TalkisCheap% 
+if %constructor_next%==1 set talkischeap=%TalkisCheap%,%incrementalcounter%,
+Exit /B
+:constructor
+set /a constructor_next=0
+set /a incrementalcounter=0
+for %%g in (%key__%) do (if /I "%%g"=="%1" set /a constructor_next=1&Exit /B)&set /a incrementalcounter+=1
+:constructor_next
+Exit /B
+:check_char
+
+Exit /B
 :READ
 set contents=
 set lastline=
@@ -60,6 +100,7 @@ REM debug mode: echo. attention
 REM debug mode: echo !contents!
 REM debug mode: echo. i said attention 
 REM debug mode: echo. test 2
+call :decode_it
 for /f "delims=" %%i in ("!contents!") do echo %%i | findstr /v /r "^somebodyistyping:" |  findstr /v /r "^somebodyentered:" | findstr /v /r "^%nickname%:"
 for /f "delims=" %%i in ('echo !contents!') do set lastline=%%i
 set str=
@@ -69,6 +110,9 @@ set str=
 for /f "tokens=2" %%i in ('echo !lastline!  ^|  findstr /r "^somebodyentered:"') do set str=%%i
 if "!str!" NEQ ""  echo | set /p= %_fGREEN%!str!%_RESET% entered the chat&echo.
 exit /b
+:decode_it
+if exist decode.bat for /f "tokens=*" %%i in ('decode.bat "!contents!"') do set contents=%%~i
+Exit /b
 :CHECKLINE
 set /a counter=0
 for /f "delims=" %%i in ('type %server%%chatroom%%timer%.txt') do set /a counter+=1
