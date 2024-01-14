@@ -14,7 +14,7 @@ keys. Please avoid using the following:<b> |  & " ^ % ! (  ) = </b>
 
 If key.bat is deleted, encryption is ( automatically ) disabled.
 
-<br>Please take it with a pinch of Salt.</br>
+Please take it with a pinch of Salt.
 
 Servers can be implemented by mounting a remote location (or drive) locally and running the batch script in that
 folder.
