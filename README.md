@@ -10,7 +10,7 @@ opens the chat server file they are not immediately privy to the chats.</br>
 A mechanism could be implemented for rotating / multiple / changing keys. A project called 'tokenism'<br>
 generates keys. Key is implemented in key.bat. First line in key.bat is only for reference. Keys can<br>
 be changed manually. Both users must have the same keys to communicate. Symbols can be incorporated in<br>
-keys. Please avoid using the following:<b> |  & " ^ % ! </b>
+keys. Please avoid using the following:<b> |  & " ^ % ! (  ) = </b>
 
 If key.bat is deleted, encryption is ( automatically ) disabled.
 
