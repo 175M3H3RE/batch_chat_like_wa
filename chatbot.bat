@@ -1,8 +1,8 @@
 :talker
 setlocal enabledelayedexpansion
 @echo off
-set key__=a b c d e f g h i j k l m n o p q r s t u v w x y z
-set key__=k h z a j m s f d u y n r l b c e g i o p q t v w x
+if exist key.bat call key.bat
+if defined key__ for %%a in (%key__%) DO set /a counteng+=1
 if not defined KEY__ goto check_key
 set /a countering=0
 echo.@echo off >decode.bat
@@ -15,7 +15,6 @@ echo set stringtodecode=%%stringtodecode:,%countering%,=%1%% >>decode.bat
 exit /b
 :check_key
 
-if defined key__ for %%a in (%key__%) DO set /a counteng+=1
 
 mode 60,20
 Set _fDGray=[90m
@@ -73,9 +72,9 @@ exit /b
 :getchar_
 if %skip_talk%==1 Exit /B
 CALL set char_single=%%talker:~%1,1%%
-if "%char_single%"=="" set /a skip_talk=1
+if "%char_single%"=="" set /a skip_talk=1&Exit /B
 if "%char_single%" NEQ " " CALL :Constructor %char_single%
-if "%char_single%"==" " set talkischeap=%TalkisCheap% 
+if "%char_single%"==" " set talkischeap=%TalkisCheap% &set /a constructor_next=0
 if %constructor_next%==1 set talkischeap=%TalkisCheap%,%incrementalcounter%,
 Exit /B
 :constructor
