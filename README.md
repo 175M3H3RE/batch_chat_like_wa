@@ -7,4 +7,8 @@
 forcing it was never meant for security but rather for obsufcation. So that when<br> some one
 opens the chat server file they are not immediately privy to the chats.</br>
 
+A mechanism could be implemented for rotating / multiple / changing keys. A project called 'tokenism'<br>
+generates keys. Key is implemented in key.bat. First line in key.bat is only for reference. Keys can<br>
+be changed manually. Both users must have the same keys to communicate. Symbols can be incorporated in<br>
+keys. Please avoid using the following:<b> |  & " ^ % ! 
 <br>Please take it with a pinch of Salt.</br>
