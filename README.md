@@ -7,9 +7,9 @@
 forcing it was never meant for security but rather for obsufcation. So that when<br> some one
 opens the chat server file they are not immediately privy to the chats.</br>
 
-A mechanism could be implemented for rotating / multiple / changing keys. A project called 'tokenism'<br>
-generates keys. Key is implemented in key.bat. First line in key.bat is only for reference. Keys can<br>
-be changed manually. Both users must have the same keys to communicate. Symbols can be incorporated in<br>
+A mechanism could be implemented for rotating / multiple / changing keys. A project <br>called 'tokenism'
+generates keys. Key is implemented in key.bat. First line in key.bat is only for reference.<br> Keys can
+be changed manually. Both users must have the same keys to communicate. <br>Symbols can be incorporated in
 keys. Please avoid using the following:<b> |  & " ^ % ! (  ) = </b>
 
 If key.bat is deleted, encryption is ( automatically ) disabled.
