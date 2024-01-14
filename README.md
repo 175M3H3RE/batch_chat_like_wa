@@ -1,6 +1,6 @@
 <b> WhatsApp like batch-chat with Username is typing.. support</b>
 <br><font size=23>Update: Now with end-to-end encryption</font></br>
-<br>- *Is there really end-to-end encyption?*</br>
+<br>- *Is there really end-to-end encryption?*</br>
 <br>Ans: In so much as the server chat files are not stored in plain text,
 You need to<br> understand end-to-end encryption on a batch scripting is a tall ask.
 While the<br> chat (cipher text) could be decrypted by some one who knows / sees the key<br> or by brute
