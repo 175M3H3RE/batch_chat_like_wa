@@ -36,7 +36,7 @@ echo.
 if defined counteng if "%counteng%" GEQ "25" echo.      Encryption Key "seems" OK[%counteng%]
 if not defined counteng ( echo.          Key seems missing ^[No encryption^] )
 PAUSE 
-PAUSE >NUL
+timeout 3 >NUL
 set server=.\
 set /p nickname=Enter your nickname (no duplicates allowed.):
 set /p chatroom=Enter chatroom ID or name:
