@@ -1,7 +1,11 @@
 <b> WhatsApp like batch-chat with Username is typing.. support</b>
 <br><font size=23>Update: Now with end-to-end encryption</font></br>
-<br>- *Is there really end-to-end encryption?*</br>
-<br>Ans: In so much as the server chat files are not stored in plain text,
+<br>- *Is this really end-to-end encryption?*</br>
+<br>Ans: Encryption might be misleading, the fact that u r implementing chat
+<br>in batch is simply already a lot of heavy lifting.
+<br>It is not encryption in the technical sense of the word but rather in terms
+<br>of it's history. Its called cipher text. 
+In so much as the server chat files are not stored in plain text,
 You need to<br> understand end-to-end encryption on a batch scripting is a tall ask.
 While the<br> chat (cipher text) could be decrypted by some one who knows / sees the key<br> or by brute
 forcing it was never meant for security but rather for obsufcation. So<br> that when some one
