@@ -1,6 +1,6 @@
-<b> WhatsApp like batch-chat with Username is typing.. support</b>
-<br><font size=23>Update: Now with end-to-end encryption</font></br>
-<br>- *Is this really end-to-end encryption?*</br>
+<b> WhatsApp like batch-chat with <br>Username is typing.. support</b>
+<br><font size=23>Update: Now with end-to-end encryption#</font></br>
+<br> # *Is there really end-to-end encryption?*</br>
 <br>Ans: Encryption might be misleading, the fact that u r implementing chat
 <br>in batch is simply already a lot of heavy lifting.
 <br>It is not encryption in the technical sense of the word but rather in terms
