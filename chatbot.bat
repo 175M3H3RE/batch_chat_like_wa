@@ -29,8 +29,8 @@ echo. ******************************************
 echo.             Be Safe
 echo.                   Save your Soul
 echo. Use the right keys and avoid the following
-echo.                ^>  ^<  ^&  ^|  " ^ ^!
-echo.     Allowed symbols , : / \ * $ @ #                    
+echo.                ^>  ^<  ^&  ^|  " ^ ^( ^)
+echo.     Allowed symbols  : / \ . $ @ # [ ] { }                   
 echo.
 
 if defined counteng if "%counteng%" GEQ "25" echo.      Encryption Key "seems" OK[%counteng%]
