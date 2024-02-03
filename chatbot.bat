@@ -29,7 +29,7 @@ echo. ******************************************
 echo.             Be Safe
 echo.                   Save your Soul
 echo. Use the right keys and avoid the following
-echo.                ^>  ^<  ^&  ^|  " ^ ^( ^)
+echo.                ^>  ^<  ^&  ^|  " ^ ( )
 echo.     Allowed symbols  : / \ . $ @ # [ ] { }                   
 echo.
 
