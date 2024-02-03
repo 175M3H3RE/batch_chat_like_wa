@@ -20,6 +20,8 @@ keys.<br>
 #### Allowed List
 <br>To quote something, use back ticks: ``` `something` ```
 <br>To use brackets, use square/curly: ``` [something] ```
+
+
 <br>To use emoji (text): ``` :sad: ```
 <br>To use full stop: ``` A sentence. ```
 <br>E-mail address: ``` myemail@pun.rubb ```
@@ -33,3 +35,8 @@ If key.bat is deleted, encryption is ( automatically ) disabled.
 
 Servers can be implemented by mounting a remote location (or drive) locally and running the batch script in that
 folder.
+
+#### Generating Keys
+Call tokenism.bat from the command prompt
+<br>Example - ```tokenism.bat k h z a j m s f d u y n r l b c e g i o p q t v w x : . [ { ] } # @ ~ ` $```
+
