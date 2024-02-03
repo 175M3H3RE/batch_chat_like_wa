@@ -17,9 +17,16 @@ be changed manually. Both users must have the same keys to communicate. <br>Symb
 keys.<br>
 <br>Using these symbols can mess up the script bad:<b>``` | & " ^ (  ) = < > * ```</b>
 <br>These symbols will be ignored anyways: <b>```, ! %```</b>
-<br>Use these symbols in keys (they must be added to keys or key generator for them to show up in case u r using keys) : <b>```  [  ] {  } # @ ~ ` $  . : ```</b>
+#### Allowed List
+<br>To quote something, use back ticks: ``` `something` ```
+<br>To use brackets, use square/curly: ``` [something] ```
+<br>To use emoji (text): ``` :sad: ```
+<br>To use full stop: ``` A sentence. ```
+<br>E-mail address: ``` myemail@pun.rubb ```
+<br>Other symbols: ``` ~ $ # ```
 
 If key.bat is deleted, encryption is ( automatically ) disabled.
+For any symbol to show up while using keys, those (allowed list) symbols must be included in the key.
 
 <b>Please take it with a pinch of Salt.</b>
 
