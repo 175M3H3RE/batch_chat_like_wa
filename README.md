@@ -15,8 +15,8 @@ A mechanism could be implemented for rotating / multiple / changing keys. A proj
 generates keys. Key is implemented in key.bat. First line in key.bat is only <br>for reference. Keys can
 be changed manually. Both users must have the same keys to communicate. <br>Symbols can be incorporated in
 keys.<br>
-<br>Using these symbols can mess up the script bad:<b>``` | & " ^ (  ) = < > * ```</b>
-<br>These symbols will be ignored anyways: <b>```, ! %```</b>
+<br>Banned Symbol List:<b>``` | & " ^ (  ) = < > * ```</b> WARNING: Don't Use
+
 #### Allowed List
 <br>To quote something, use back ticks: ``` `something` ```
 <br>To use brackets, use square/curly: ``` [something] ```
@@ -24,6 +24,7 @@ keys.<br>
 <br>To use full stop: ``` A sentence. ```
 <br>E-mail address: ``` myemail@pun.rubb ```
 <br>Other symbols: ``` ~ $ # ```
+<br>These symbols will be ignored anyways: <b>```, ! %```</b>
 
 If key.bat is deleted, encryption is ( automatically ) disabled.
 <br>For any symbol to show up while using keys, those (allowed list) symbols must be included in the key.
