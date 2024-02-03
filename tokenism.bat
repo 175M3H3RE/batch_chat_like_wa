@@ -2,11 +2,12 @@
 set waste=
 set str=
 set /a index=0
+for %%a in (%*) do set /a alphacount+=1
 REM Change storymode to ON for some spicy story telling.
 set storymode=OFF
-for /l %%i in (1,1,26) do CALL :numbers BALL
+for /l %%i in (1,1,%alphacount%) do CALL :numbers BALL
 
-set chars=a b c d e f g h i j k l m n o p q r s t u v w x y z
+set chars=%*
 for %%g in (%chars%) do set /a counter+=1 & CALL :constructor %%g
 set ptr=%str%
 set str=
@@ -31,9 +32,11 @@ if %storymode%==ON echo %chars%
 if %storymode%==ON echo %final%
 if %storymode%==OFF echo Arrangement of Letters: %chars%
 if %storymode%==OFF echo ^|_______^> Crypt Cipher: %final%
+choice /c Yn /m "Save to File?" /d N /t 3
+if %errorlevel%==1 if not exist key.bat (echo set set key__=%final% >key.bat&echo.saved to [key.bat]) else (echo.key.bat already exists)
 PAUSE
 :numbers
-set /a minimo=(%RANDOM%*26/32767)+1
+set /a minimo=(%RANDOM%*%alphacount%/32767)+1
 if "%~1"=="BALL" CALL :construct %minimo% BALL
 Exit /B
 :construct
