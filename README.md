@@ -26,7 +26,7 @@ keys.<br>
 <br>Other symbols: ``` ~ $ # ```
 
 If key.bat is deleted, encryption is ( automatically ) disabled.
-For any symbol to show up while using keys, those (allowed list) symbols must be included in the key.
+<br>For any symbol to show up while using keys, those (allowed list) symbols must be included in the key.
 
 <b>Please take it with a pinch of Salt.</b>
 
