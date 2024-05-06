@@ -1,7 +1,17 @@
 <b> WhatsApp like batch-chat with <br>Username is typing.. support</b>
 <br><font size=23>Update: Now with end-to-end encryption#</font></br>
 <br> # *Is there really end-to-end encryption?*</br>
-<br>Ans: Encryption might be misleading, the fact that u r implementing chat
+<br>Encryption as a term might be misleading. Obsufucation, encryption, ciphers all serve the same purpose except
+<br>in the context of the Modern World encryption is commonly used which is unbreakable again the assumption is that what
+<br>needs to be hidden is some sort of a state secret and that technically able people have the motivation, time and technical ability (rare) 
+<br>to try to crack the code. all but one will most likely be missing. but if the lame data that ur trying to hide does in fact fall in the
+<br>hands of some technical mastermind the like i described above then u r screwed. or may be he is...given how lame the artifact you are 
+<br>trying to protect is. this is where the people cribbing about encryption, security and the likes i tend to disagree with. u see the biggest
+<br>companies compromised. all of their data. u use a key to encrypt and write down the key somewhere or enter it eventually. what is the attacker
+<br>gains hold of the key. that was not a lot of work. or the hash... or something else. rather u should risk assess whats important and where in
+<br>fact u should be putting ur resources. but more than that my point is obsufucation serves the purpose in most cases. stop over doing things.
+<br>be street smart that's all.
+the fact that u r implementing chat
 <br>in batch is simply already a lot of heavy lifting.
 <br>It is not encryption in the technical sense of the word but rather in terms
 <br>of it's history. Call it cipher text. 
